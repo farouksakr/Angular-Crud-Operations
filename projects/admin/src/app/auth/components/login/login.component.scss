@@ -1,0 +1,54 @@
+/* login and Register Style */
+* {
+  font-family: cursive;
+}
+
+.login {
+  position: absolute;
+  inset: 0;
+
+  .overlay {
+    background-color: rgba(0, 0, 0, 0.6);
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+  }
+
+  img {
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
+  }
+  .box {
+    padding: 40px 20px;
+    h2 {
+      color: #bc1059;
+    }
+
+    button {
+      padding: 2px 100px;
+    }
+  }
+}
+
+.snipper {
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.103);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.login-box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  background: #ffffffba;
+  border-radius: 15px;
+  aspect-ratio: 3/2;
+}

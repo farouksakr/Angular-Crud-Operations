@@ -1,0 +1,43 @@
+button {
+  color: #fff;
+  margin: 0 5px;
+  &.addTask {
+    background-color: #007bff;
+    color: #fff;
+    padding: 2px 23px;
+    font-size: 20px;
+  }
+}
+
+img {
+  width: 70px;
+  height: 70px;
+  padding: 5px;
+}
+
+:host ::ng-deep {
+  table {
+    thead {
+      background-color: #0a4a5f !important;
+      .mat-header-cell {
+        color: #fff;
+      }
+    }
+  }
+}
+
+.w-20 {
+  width: 20% !important;
+}
+
+td.mat-cell:last-of-type {
+  padding-right: 0;
+}
+
+.btn.btn-update {
+  background-color: #28a745;
+}
+
+.ngx-pagination li.current {
+  background: #0a4a5f !important;
+}

@@ -1,0 +1,18 @@
+nav {
+  background-color: #0a4a5f;
+  .navbar-brand {
+      font-size: 27px;
+      font-weight: bold;
+      color: #fff!important;
+
+  }
+  a {
+      font-size: 20px;
+      color: #FFF!important;
+      //padding: 7px 20px;
+      &.active  {
+          background-color: #910340;
+          color: #FFF;
+      }
+  }
+}
