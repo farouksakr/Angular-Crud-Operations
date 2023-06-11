@@ -54,32 +54,26 @@ export class AddTaskComponent implements OnInit {
   }
 
   createTask() {
-    this.spinner.show();
     let model = this.prepareFormData();
     this.service.addTask(model).subscribe(
       (res: any) => {
         console.log('Create Task Ok', res);
-        this.spinner.hide();
         this.dialog.close(true);
       },
       (err) => {
-        this.spinner.hide();
         console.log('Create Task Err', err.error.message);
       }
     );
   }
 
   updateTask() {
-    this.spinner.show();
     let model = this.prepareFormData();
     this.service.updateTask(model, this.data._id).subscribe(
       (res: any) => {
         console.log('update Task Ok', res);
-        this.spinner.hide();
         this.dialog.close(true);
       },
       (err) => {
-        this.spinner.hide();
         console.log('update Task Err', err.error.message);
       }
     );

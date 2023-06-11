@@ -50,7 +50,7 @@ export class ListTasksComponent implements OnInit {
     this.getAllTasks();
   }
 
-  // ********************************* Filtre ************************************
+  // ****************************** Filtre Methods *******************************
 
   // filter search for task name
   search(event:any) {
@@ -100,14 +100,10 @@ export class ListTasksComponent implements OnInit {
 
   //  Get All Tasks
   getAllTasks() {
-    this.spinner.show();
     this.service.getAllTasks(this.filteration).subscribe((res: any) => {
-      this.dataSource = this.mappingData(res.tasks);
-      this.total = res.totalItems;
-      this.spinner.hide();
-      }, (error) => {
-        this.spinner.hide();
-      }
+        this.dataSource = this.mappingData(res.tasks);
+        this.total = res.totalItems;
+      }, (error) => {}
     );
   }
 
@@ -157,15 +153,12 @@ export class ListTasksComponent implements OnInit {
 
   // Delete Task
   deleteTask(id: any) {
-    this.spinner.show();
     this.service.deleteTask(id).subscribe(
       (res) => {
-        this.spinner.hide();
         this.getAllTasks();
       },
       (err) => {
         console.log('delete error', err);
-        this.spinner.hide();
       }
     );
   }

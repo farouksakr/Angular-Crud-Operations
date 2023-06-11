@@ -13,8 +13,7 @@ export class LoginComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private service: LoginService,
-    private router:Router,
-    private spinner: NgxSpinnerService
+    private router:Router
   ) {}
 
   loginForm!: FormGroup;
@@ -33,16 +32,13 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    this.spinner.show();
     this.service.login(this.loginForm.value).subscribe(
       (res: any) => {
         localStorage.setItem('token', res.token)
         this.router.navigate(['/tasks']);
-        this.spinner.hide();
         console.log(res);
       },
       (error) => {
-        this.spinner.hide();
         console.log(error);
       }
     );
