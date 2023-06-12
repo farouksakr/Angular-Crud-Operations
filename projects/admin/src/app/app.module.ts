@@ -12,10 +12,6 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 import { CoreModule } from './core/core.module';
 import { NgxPaginationModule } from 'ngx-pagination';
 
-// import ngx-translate and the http loader
-import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -29,14 +25,6 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
     NgxSpinnerModule.forRoot({ type: 'square-jelly-box' }),
     CoreModule,
     NgxPaginationModule,
-    TranslateModule.forRoot({
-      defaultLanguage: 'en',
-      loader: {
-        provide: TranslateLoader,
-        useFactory: HttpLoaderFactory,
-        deps: [HttpClient],
-      },
-    }),
   ],
   // exports: [
   //   NgxPaginationModule,
@@ -45,8 +33,3 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
   bootstrap: [AppComponent],
 })
 export class AppModule {}
-
-// ngx-translate
-export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
-  return new TranslateHttpLoader(http);
-}
