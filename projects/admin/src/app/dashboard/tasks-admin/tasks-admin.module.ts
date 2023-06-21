@@ -9,6 +9,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ConfirmationComponent } from './components/confirmation/confirmation.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { SharedModule } from '../../shared/shared.module';
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
     CommonModule,
     TasksAdminRoutingModule,
     NgxPaginationModule,
+    SharedModule,
   ]
 })
 export class TasksAdminModule { }

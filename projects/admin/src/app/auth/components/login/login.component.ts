@@ -36,10 +36,9 @@ export class LoginComponent implements OnInit {
       (res: any) => {
         localStorage.setItem('token', res.token)
         this.router.navigate(['/tasks']);
-        console.log(res);
       },
       (error) => {
-        console.log(error);
+        console.log('error admin login',error);
       }
     );
   }

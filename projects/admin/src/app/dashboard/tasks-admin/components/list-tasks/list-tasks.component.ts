@@ -103,7 +103,7 @@ export class ListTasksComponent implements OnInit {
     this.service.getAllTasks(this.filteration).subscribe((res: any) => {
         this.dataSource = this.mappingData(res.tasks);
         this.total = res.totalItems;
-      }, (error) => {}
+      }
     );
   }
 
@@ -156,9 +156,6 @@ export class ListTasksComponent implements OnInit {
     this.service.deleteTask(id).subscribe(
       (res) => {
         this.getAllTasks();
-      },
-      (err) => {
-        console.log('delete error', err);
       }
     );
   }

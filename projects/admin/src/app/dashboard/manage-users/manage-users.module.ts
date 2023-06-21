@@ -5,6 +5,7 @@ import { MaterialModule } from '../../material/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ManageUsersRoutingModule } from './manage-users-routing.module';
+import { SharedModule } from '../../shared/shared.module';
 
 
 
@@ -18,7 +19,8 @@ import { ManageUsersRoutingModule } from './manage-users-routing.module';
     ReactiveFormsModule,
     ManageUsersRoutingModule,
     HttpClientModule,
-    CommonModule
+    CommonModule,
+    SharedModule,
   ]
 })
 export class ManageUsersModule { }
