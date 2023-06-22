@@ -1,4 +1,4 @@
-<div class="login d-flex justify-content-center align-items-center m-auto">
+<div class="login d-flex align-items-center m-auto">
 
     <div class="row">
         <div class="col-md-6 p-0">
@@ -10,21 +10,21 @@
             <div class="box w-75">
                 <h2>Login </h2>
 
-                <form>
+                <form [formGroup]="loginForm">
                     <mat-form-field appearance="outline" class="w-100">
                         <mat-label>Email</mat-label>
-                        <input matInput   placeholder="email">
+                        <input matInput placeholder="email" formControlName="email">
                         <mat-error>required</mat-error>
                     </mat-form-field>
                     <mat-form-field appearance="outline" class="w-100">
                         <mat-label>Password</mat-label>
-                        <input matInput   placeholder="password">
+                        <input matInput type="password" placeholder="password" formControlName="password">
                         <mat-error>required</mat-error>
 
                     </mat-form-field>
                 </form>
                 <div class="d-flex justify-content-center">
-                    <button   mat-raised-button color="warn">Login</button>
+                    <button   mat-raised-button color="warn" (click)="login()">Login</button>
                 </div>
                 <div class="d-flex justify-content-center mt-3">
                   <a routerLink="/auth/register">Create Account ? </a>

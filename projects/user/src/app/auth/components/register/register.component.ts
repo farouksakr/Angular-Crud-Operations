@@ -9,6 +9,7 @@ import {
 } from '@angular/forms';
 import { createAccount } from '../../constant/DTO';
 import { LoginService } from '../../services/login.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -17,7 +18,7 @@ import { LoginService } from '../../services/login.service';
 export class RegisterComponent implements OnInit {
   registerForm!: FormGroup;
 
-  constructor(private fb: FormBuilder, private service: LoginService) {}
+  constructor(private fb: FormBuilder, private service: LoginService, private router:Router) {}
 
   ngOnInit(): void {
     this.createForm();
@@ -43,14 +44,9 @@ export class RegisterComponent implements OnInit {
       password: this.registerForm.value['password'],
       role: 'user',
     };
-    this.service.createUser(model).subscribe(
-      (res) => {
-        console.log('succes');
-      },
-      (error) => {
-        console.log('error');
-      }
-    );
+    this.service.createUser(model).subscribe(res => {
+      this.router.navigate(['/tasks'])
+    });
   }
 
   checkPassword: ValidatorFn = (group: AbstractControl): ValidationErrors | null => {
