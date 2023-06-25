@@ -8,6 +8,9 @@ import { MaterialModule } from './material/material.module';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { CoreModule } from './core/core.module';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [AppComponent],
@@ -15,11 +18,13 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserModule,
     MaterialModule,
     FormsModule,
+    CoreModule,
     ReactiveFormsModule,
     HttpClientModule,
     AppRoutingModule,
-
     BrowserAnimationsModule,
+    NgxSpinnerModule.forRoot({ type: 'square-jelly-box' }),
+    NgxPaginationModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

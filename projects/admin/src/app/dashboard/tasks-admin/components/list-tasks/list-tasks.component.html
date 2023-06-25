@@ -96,6 +96,7 @@
             <tr mat-row *matRowDef="let row; columns: displayedColumns | paginate: { id: 'tasks', itemsPerPage: 10, currentPage: page, totalItems: total }"></tr>
           </table>
 
+          <!-- pagination -->
           <div class="d-flex justify-content-center mt-4">
             <pagination-controls (pageChange)="changePage($event)" id="tasks"></pagination-controls>
           </div>

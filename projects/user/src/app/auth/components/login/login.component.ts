@@ -28,8 +28,9 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    this.service.login(this.loginForm.value).subscribe(res => {
-      this.router.navigate(['/tasks'])
+    this.service.login(this.loginForm.value).subscribe((res: any) => {
+      this.router.navigate(['/tasks']);
+      localStorage.setItem('token', res.token)
     })
   }
 }
