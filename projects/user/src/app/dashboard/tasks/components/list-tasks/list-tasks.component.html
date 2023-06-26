@@ -1,17 +1,21 @@
 <div class="mt-4">
 
   <div class="row">
-    <div class="col-md-3" *ngFor="let item of dataSource | paginate: { id: 'tasks', itemsPerPage: 5, currentPage: page, totalItems: 10 }; let index = index">
+    <div class="col-md-4 col-sm-6 col-12"
+      *ngFor="let item of dataSource | paginate: { id: 'tasks', itemsPerPage: 5, currentPage: page, totalItems: totalItems };
+      let index = index">
+
       <div class="card mt-3" >
         <div class="card-body">
           <img [src]="'https://crud-db.onrender.com/' + item.image" alt="">
           <h2 class="card-title">{{item.title}}</h2>
-          <p class="card-subtitle mb-2 text-muted">Dead-Line Date : {{item.deadLineDate}}</p>
+          <p class="card-subtitle mb-2 text-muted">Dead-Line Date : {{item.deadline}}</p>
           <p class="card-text">{{item.description }}</p>
           <a  class="card-link"  mat-raised-button color="basic">Details</a>
-          <button  mat-raised-button color="warn">Complete</button>
+          <button  mat-raised-button color="warn" (click)="complete(item)">Complete</button>
         </div>
       </div>
+
     </div>
   </div>
 

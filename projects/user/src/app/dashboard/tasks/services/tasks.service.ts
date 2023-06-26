@@ -16,4 +16,8 @@ export class TasksService {
 
     return this.http.get(environment.baseApi + '/user-tasks/' + userId, { params });
   }
+
+  completeTAsk(model: object) {
+    return this.http.put(environment.baseApi + '/complete' , model)
+  }
 }

@@ -26,6 +26,8 @@ export class ListTasksComponent implements OnInit {
 
   selectedStatus: string = 'In-Progress';
 
+  totalItems: any = 0;
+
   constructor(public dialog: MatDialog, private fb: FormBuilder, private service: TasksService) {}
 
   ngOnInit(): void {
@@ -43,12 +45,14 @@ export class ListTasksComponent implements OnInit {
     });
   }
 
+  // Extract The Data From Token
   getUSerData() {
     let token = JSON.stringify(localStorage.getItem('token'));
     this.userDate =  JSON.parse(window.atob(token.split('.')[1]));
     console.log(this.userDate);
   }
 
+  // Get All Tasks
   getAllTasks() {
     let params = {
       page: this.page,
@@ -58,11 +62,25 @@ export class ListTasksComponent implements OnInit {
 
     this.service.getUserTasks(this.userDate.userId, params).subscribe((res: any) => {
       this.dataSource = res.tasks;
+      this.totalItems = res.totalItems;
+    }, (err) => {
+      this.dataSource = [];
     })
   }
 
+  // Pagination
   changePage(event: any) {
     this.page = event;
+    this.getAllTasks();
+  }
+
+  complete(ele: any) {
+    const model = {
+      id: ele._id
+    }
+    this.service.completeTAsk(model).subscribe((res) => {
+      this.getAllTasks();
+    })
   }
 
 }
