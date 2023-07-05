@@ -6,6 +6,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ManageUsersRoutingModule } from './manage-users-routing.module';
 import { SharedModule } from '../../shared/shared.module';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 
@@ -21,6 +22,7 @@ import { SharedModule } from '../../shared/shared.module';
     HttpClientModule,
     CommonModule,
     SharedModule,
+    NgxPaginationModule
   ]
 })
 export class ManageUsersModule { }

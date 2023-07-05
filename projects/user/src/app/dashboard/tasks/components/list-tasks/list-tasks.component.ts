@@ -49,7 +49,6 @@ export class ListTasksComponent implements OnInit {
   getUSerData() {
     let token = JSON.stringify(localStorage.getItem('token'));
     this.userDate =  JSON.parse(window.atob(token.split('.')[1]));
-    console.log(this.userDate);
   }
 
   // Get All Tasks
@@ -78,7 +77,7 @@ export class ListTasksComponent implements OnInit {
     const model = {
       id: ele._id
     }
-    this.service.completeTAsk(model).subscribe((res) => {
+    this.service.completeTask(model).subscribe((res) => {
       this.getAllTasks();
     })
   }

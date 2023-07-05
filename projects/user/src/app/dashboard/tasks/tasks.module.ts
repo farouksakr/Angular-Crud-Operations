@@ -8,11 +8,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { MaterialModule } from '../../material/material.module';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { TaskDetailsComponent } from './components/task-details/task-details.component';
 
 
 @NgModule({
   declarations: [
-    ListTasksComponent
+    ListTasksComponent,
+    TaskDetailsComponent
   ],
   imports: [
     MaterialModule,

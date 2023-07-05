@@ -5,6 +5,7 @@ import { TasksService } from '../../services/tasks.service';
 import { AddTaskComponent } from '../add-task/add-task.component';
 import { NgxSpinnerService } from 'ngx-spinner';
 import * as moment from 'moment';
+import { UsersService } from '../../../manage-users/services/users.service';
 
 export interface PeriodicElement {
   title: string;
@@ -21,7 +22,7 @@ export interface PeriodicElement {
 export class ListTasksComponent implements OnInit {
   displayedColumns: string[] = [ 'position', 'title', 'user', 'deadline', 'status', 'actions',];
 
-  users: any = [ { name: 'Mohamed', id: '64099a37a17641587dcce4e8' }, { name: 'Ali', id: '64099684a17641587dcce4df' } ];
+  users: any = [];
 
   status: any = [ { name: 'Complete' }, { name: 'In-Progress' } ];
 
@@ -43,11 +44,35 @@ export class ListTasksComponent implements OnInit {
   constructor(
     private service: TasksService,
     private dialog: MatDialog,
-    private spinner: NgxSpinnerService
-  ) {}
+    private spinner: NgxSpinnerService,
+    private userService: UsersService,
+  ) {
+    this.getDataFromSubject();
+  }
 
   ngOnInit(): void {
+    this.getUsers();
     this.getAllTasks();
+  }
+
+  getUsers() {
+    this.userService.getUsersData()
+  }
+
+  getDataFromSubject() {
+    this.userService.userData.subscribe((res: any) => {
+      this.users = this.usersMapping(res.data);
+    })
+  }
+
+  usersMapping(data: any[]) {
+    let newArray = data?.map(item => {
+      return {
+        name : item.username,
+        id: item._id
+      }
+    })
+    return newArray;
   }
 
   // ****************************** Filtre Methods *******************************

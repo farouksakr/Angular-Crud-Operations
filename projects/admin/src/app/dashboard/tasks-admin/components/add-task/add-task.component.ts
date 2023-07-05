@@ -5,6 +5,7 @@ import * as moment from 'moment';
 import { TasksService } from './../../services/tasks.service';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ConfirmationComponent } from '../confirmation/confirmation.component';
+import { UsersService } from '../../../manage-users/services/users.service';
 
 @Component({
   selector: 'app-add-task',
@@ -19,14 +20,13 @@ export class AddTaskComponent implements OnInit {
     public dialog: MatDialogRef<AddTaskComponent>,
     public matDialog: MatDialog,
     private service: TasksService,
-    private spinner: NgxSpinnerService
-  ) {}
+    private spinner: NgxSpinnerService,
+    private userService: UsersService,
+  ) {
+    this.getDataFromSubject();
+  }
 
-  users: any = [
-    { name: 'Mohamed', id: '64099a37a17641587dcce4e8' },
-    { name: 'Ali', id: '64099684a17641587dcce4df' },
-    { name: 'Test', id: '64883b8ba995f1749ef8a899' },
-  ];
+  users: any = [];
 
   newTaskForm!: FormGroup;
   fileName!: '';
@@ -36,6 +36,24 @@ export class AddTaskComponent implements OnInit {
     console.log(this.data);
 
     this.createForm();
+  }
+
+  getDataFromSubject() {
+    this.userService.userData.subscribe((res: any) => {
+      this.users = this.usersMapping(res.data);
+    })
+  }
+
+  usersMapping(data: any[]) {
+    let newArray = data?.map(item => {
+      return {
+        name : item.username,
+        id: item._id
+      }
+    })
+    console.log(newArray);
+
+    return newArray;
   }
 
   createForm() {

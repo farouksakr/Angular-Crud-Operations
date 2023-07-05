@@ -11,8 +11,8 @@
           <h2 class="card-title">{{item.title}}</h2>
           <p class="card-subtitle mb-2 text-muted">Dead-Line Date : {{item.deadline}}</p>
           <p class="card-text">{{item.description }}</p>
-          <a  class="card-link"  mat-raised-button color="basic">Details</a>
-          <button  mat-raised-button color="warn" (click)="complete(item)">Complete</button>
+          <a  class="card-link"  mat-raised-button color="basic" routerLink="/tasks/{{item._id}}">Details</a>
+          <button mat-raised-button color="warn" (click)="complete(item)">Complete</button>
         </div>
       </div>
 
@@ -23,8 +23,8 @@
     <pagination-controls (pageChange)="changePage($event)" id="tasks"></pagination-controls>
   </div>
 
-  <!--
-    <div class="listBox">
+
+    <!-- <div class="listBox">
       <table mat-table [dataSource]="dataSource" class="mat-elevation-z8  w-100 mt-2">
         <ng-container matColumnDef="position">
           <th mat-header-cell *matHeaderCellDef> No. </th>
@@ -62,7 +62,7 @@
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
       </table>
-    </div>
-  -->
+    </div> -->
+
 
 </div>
